@@ -11,9 +11,6 @@ let position = {
     y: 200
 };
 
-Socketio.on("connection", socket => {
-    socket.emit("position", position);
-});
 
 Socketio.on("connection", socket => {
     socket.emit("position", position);
@@ -38,3 +35,10 @@ Socketio.on("connection", socket => {
         }
     });
 });
+
+//CHAT
+
+app.get("/index", (req, res) => {
+    res.send("Welcome home")
+})
+

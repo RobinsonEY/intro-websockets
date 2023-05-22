@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   private socket: any;
 
   public ngOnInit() {
-    this.socket = io("http://localhost:3000", { transports: ['websocket', 'polling', 'flashsocket'] });
+    this.socket = io("http://localhost:3000", { transports: ['websocket'] });
   }
 
   public move(direction: string) {
