@@ -1,7 +1,5 @@
-<canvas #game width="640" height="480" style="border: 1px solid black"></canvas>
-<p>
-    <button (click)="move('right')">Right</button>
-    <button (click)="move('left')">Left</button>
-    <button (click)="move('up')">Up</button>
-    <button (click)="move('down')">Down</button>
-</p>
+<a type="button" class="rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none" routerLink="/example1"><button type="button" > Examble 1</button></a>
+<a type="button" class="rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-red-400 focus:outline-none" routerLink="/example2"><button type="button" > Examble 2</button></a>
+<router-outlet></router-outlet>
+
+
