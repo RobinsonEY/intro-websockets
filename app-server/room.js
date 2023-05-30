@@ -14,7 +14,7 @@ class Room {
 
   joinRoom() {
     return new Promise((resolve) => {
-        for (let i = 0; i < this.roomsState.length; i++) {
+      for (let i = 0; i < this.roomsState.length; i++) {
         if (this.roomsState[i].users < ROOM_MAX_CAPACITY) {
           this.roomsState[i].users++;
           return resolve(this.roomsState[i].id);
