@@ -1,13 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { io } from 'socket.io-client';
 import * as CryptoJS from 'crypto-js';
+import { interval, take } from 'rxjs';
 
 
-interface Message {
-  id?: string,
-  message?: string,
-  class?: string
-}
 
 const apiKey = 'ahkJc1xC3Xlps2CiBJjMrhiJcTZ9aCa8MtZA63SLomx' // Users API credentials are defined here
 const apiSecret = 'KhzReGPZXvD7Rd1bMkcym9gVd1K7wxszpd0c2HqVA7B'
@@ -33,7 +28,10 @@ export class Example3Component implements OnInit, AfterViewInit {
 
   public webSocket!: WebSocket;
 
-  public objectToShow:{nameTable?:string, action?:string} = {}
+  public objectToShow: { nameTable?: string, action?: string } = {}
+
+  // Crear una cola de mensajes
+  public messageQueue:any[] = [];
 
   constructor() { }
 
@@ -46,18 +44,17 @@ export class Example3Component implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
 
     this.webSocket.addEventListener('open', (event) => {
-      this.webSocket.send({"op": "subscribe", "args": ['trade']} as any);
+      this.webSocket.send({ "op": "subscribe", "args": ['trade'] } as any);
     });
+
 
     this.webSocket.addEventListener('message', (event: any) => {
-      const data = JSON.parse(event.data);
-      this.objectToShow = {
-        nameTable: data.table,
-        action: data.action
-      }
+        const data = JSON.parse(event.data);
+        this.objectToShow = {
+          nameTable: data.table,
+          action: data.action
+        }
     });
-
-
 
     this.webSocket.addEventListener('close', (event) => {
       console.log('WebSocket connection closed');
@@ -68,6 +65,8 @@ export class Example3Component implements OnInit, AfterViewInit {
     });
 
   }
+
+
 
 
 }

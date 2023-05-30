@@ -8,13 +8,15 @@ import { Example2Component } from './components/example2/example2.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Example3Component } from './components/example3/example3.component';
+import { Example4Component } from './components/example4/example4.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Example1Component,
     Example2Component,
-    Example3Component
+    Example3Component,
+    Example4Component
   ],
   imports: [
     BrowserModule,
